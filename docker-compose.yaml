@@ -17,3 +17,24 @@ services:
     ports:
       - 3306:3306
     restart: unless-stopped
+
+  account-manager:
+    image: darkflame/accountmanager
+    build:
+      context: .
+      dockerfile: AccountManager.Dockerfile
+    container_name: account-manager
+    env_file:
+      - .env
+    ports:
+      - 5000:5000
+    restart: unless-stopped
+  brickfix:
+    image: darkflame/brickfix
+    build:
+      context: .
+      dockerfile: BrickFix.Dockerfile
+    container_name: brixbuildfix
+    ports:
+      - 80:80
+    restart: unless-stopped
