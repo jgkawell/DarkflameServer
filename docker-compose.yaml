@@ -24,8 +24,10 @@ services:
       context: .
       dockerfile: AccountManager.Dockerfile
     container_name: account-manager
-    env_file:
-      - .env
+    environment:
+      - MYSQL_DATABASE=${LUDB_USER_DB_NAME}
+      - MYSQL_PASSWORD=${LUDB_DATABASE_PASSWORD}
+      - MYSQL_USER=${LUDB_MYSQL_USER}
     ports:
       - 5000:5000
     restart: unless-stopped
